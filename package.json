@@ -9,7 +9,6 @@
     "build": {
       "appId": "com.little.pro",
       "productName": "Little Pro MVP"
-      // אפשר להרחיב להגדרות "mac" / "win" / "publish"
     },
     "devDependencies": {
       "electron": "^30.0.1",
