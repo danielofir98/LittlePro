@@ -1,0 +1,75 @@
+<!-- social.html -->
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>Little Social</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="social.css">
+</head>
+<body>
+  <div class="page-container">
+    <nav class="top-nav">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+    </ul></nav>
+    <h1>Little Social</h1>
+
+    <p><strong>משתמש מחובר:</strong> <span id="display-username"></span> |
+       <strong>ID:</strong> <span id="display-userid"></span></p>
+    <button id="edit-profile-btn" class="nav-btn">Edit Profile</button>
+
+    <!-- חלון עריכת פרופיל -->
+    <div id="edit-profile-modal" class="auth-modal hidden">
+      <div class="auth-modal-content" style="width: 300px;">
+        <h3>Edit Profile</h3>
+        <label for="profile-name">Display Name:</label>
+        <input type="text" id="profile-name" placeholder="Your Name">
+        <label for="profile-bio">Bio:</label>
+        <textarea id="profile-bio" rows="3" placeholder="Your bio..."></textarea>
+        <button id="profile-close-btn">Close</button>
+        <button id="profile-save-btn">Save</button>
+      </div>
+    </div>
+
+    <div class="social-container">
+      <div class="social-left">
+        <h2 class="section-title">Create a Post</h2>
+        <textarea id="post-text" rows="3" placeholder="מה תרצה לשתף?"></textarea>
+        <button id="post-submit" class="post-btn">Post</button>
+
+        <h2 class="section-title">Friends</h2>
+        <div>
+          <input type="text" id="friend-id" placeholder="Enter friend ID">
+          <button id="add-friend-btn" class="post-btn">Add Friend</button>
+        </div>
+        <ul id="friends-list"></ul>
+
+        <h2 class="section-title">Private Messages</h2>
+        <div>
+          <input type="text" id="pm-text" placeholder="Type your message">
+          <input type="text" id="pm-recipient" placeholder="Recipient ID">
+          <button id="send-pm-btn" class="post-btn">Send Message</button>
+        </div>
+        <ul id="pm-list"></ul>
+      </div>
+
+      <div class="social-right">
+        <h2 class="section-title">Feed</h2>
+        <div id="feed-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bottom-nav">
+    <button id="nav-home" class="nav-btn">Home</button>
+    <button id="nav-back" class="nav-btn">←</button>
+    <button id="nav-forward" class="nav-btn">→</button>
+    <button id="nav-refresh" class="nav-btn refresh-btn">⟳</button>
+  </div>
+
+  <script src="userData.js"></script>
+  <script src="social.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

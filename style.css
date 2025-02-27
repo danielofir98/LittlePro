@@ -1,0 +1,220 @@
+:root {
+    --bg-light: #EFFFE7;
+    --bg-dark: #0F2F0F;
+    --accent: #71C671;
+    --accent-dark: #4D9C4D;
+    --text-dark: #1E381B;
+    --transition-speed: 0.3s;
+    --btn-radius: 12px;
+    --btn-padding: 10px 20px;
+    --box-shadow-light: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    direction: rtl;
+    overflow-x: hidden;
+  }
+  a {
+    text-decoration: none;
+    color: var(--accent-dark);
+  }
+  a:hover {
+    color: var(--bg-dark);
+  }
+  
+  /* סרגל תחתון גלובלי */
+  #bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    background-color: var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    z-index: 9999;
+  }
+  .nav-btn {
+    background-color: #fff;
+    border: none;
+    border-radius: var(--btn-radius);
+    padding: 8px 14px;
+    cursor: pointer;
+    color: var(--text-dark);
+    font-weight: bold;
+    transition: background var(--transition-speed), transform var(--transition-speed);
+  }
+  .nav-btn:hover {
+    background-color: var(--accent-dark);
+    color: #fff;
+    transform: scale(1.05);
+  }
+  .refresh-btn.rotate {
+    animation: spin 1s linear;
+  }
+  @keyframes spin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* מבנה עמוד כללי */
+  .page-container {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 100px;
+  }
+  .top-nav {
+    text-align: right;
+    margin-top: 10px;
+  }
+  .top-nav ul {
+    list-style-type: none;
+    margin: 0; 
+    padding: 0;
+  }
+  .top-nav li {
+    display: inline-block;
+    margin: 0 15px;
+  }
+  
+  /* auth-modal */
+  .auth-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000;
+  }
+  .auth-modal.hidden {
+    display: none;
+  }
+  .auth-modal-content {
+    background-color: var(--bg-light);
+    border: 3px solid var(--accent-dark);
+    border-radius: var(--btn-radius);
+    width: 400px;
+    max-width: 90%;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+  .auth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  .tab-nav {
+    display: flex;
+    border-bottom: 1px solid var(--accent-dark);
+    margin-bottom: 20px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-dark);
+    transition: background var(--transition-speed);
+  }
+  .tab-btn.active {
+    background-color: var(--accent);
+    color: #fff;
+  }
+  .auth-form {
+    display: none;
+  }
+  .auth-form.active {
+    display: block;
+  }
+  .auth-form input {
+    width: 80%;
+    margin: 8px auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid var(--accent-dark);
+    border-radius: 5px;
+  }
+  .auth-form button {
+    margin-top: 10px;
+    border: none;
+    background-color: var(--accent);
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  .auth-form button:hover {
+    background-color: var(--accent-dark);
+  }
+  .message {
+    color: red;
+    margin-top: 10px;
+  }
+  /* social.css */
+.social-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.social-left,
+.social-right {
+  flex: 1 1 400px;
+  background: #FFFFFFCC;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  min-width: 300px;
+}
+.social-right {
+  flex-grow: 2;
+}
+.section-title {
+  margin-top: 0;
+  border-bottom: 2px solid var(--accent-dark);
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.post-btn {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0;
+}
+.post-btn:hover {
+  background-color: var(--accent-dark);
+}
+.feed-post {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+.feed-post .meta {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 5px;
+}
+  /* ועוד סגנונות home/social/locker/mail וכו' בהמשך (שולבו בקוד הקודם) */

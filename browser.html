@@ -1,0 +1,45 @@
+<!-- browser.html -->
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>Little Browser</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="browser.css">
+</head>
+<body>
+  <div class="page-container">
+    <nav class="top-nav">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+      </ul>
+    </nav>
+    <h1>Little Browser</h1>
+
+    <div class="address-bar">
+      <button id="safe-toggle" class="nav-btn">Safe On</button>
+      <input type="text" id="url-input" placeholder="הזן כתובת או חיפוש...">
+      <button id="go-btn" class="nav-btn">Go</button>
+    </div>
+    <p style="color: #666;">הקלד כתובת (כולל .com) או מילה לחיפוש בגוגל.</p>
+  </div>
+
+  <div id="bottom-nav">
+    <button id="nav-home" class="nav-btn">Home</button>
+    <button id="nav-back" class="nav-btn">←</button>
+    <button id="nav-forward" class="nav-btn">→</button>
+    <button id="nav-refresh" class="nav-btn refresh-btn">⟳</button>
+  </div>
+
+  <script>
+    let eRenderer;
+    try {
+      eRenderer = require('electron').ipcRenderer;
+    } catch (err) {
+      console.warn('Electron not detected. Run via "npm start" in Electron.');
+    }
+  </script>
+  <script src="browser.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>
