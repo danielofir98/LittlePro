@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>Little - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- מודאל התחברות/הרשמה -->
+  <div id="auth-modal" class="auth-modal hidden">
+    <div class="auth-modal-content">
+      <div class="auth-header">
+        <h2>ברוכים הבאים ל-Little</h2>
+        <button id="close-auth-modal" class="close-btn">&times;</button>
+      </div>
+      <div class="tab-nav">
+        <button id="login-tab-btn" class="tab-btn active">כניסה</button>
+        <button id="register-tab-btn" class="tab-btn">הרשמה</button>
+      </div>
+      <div id="login-form" class="auth-form active">
+        <h3>כניסה</h3>
+        <form id="loginForm">
+          <input type="text" id="loginUsername" placeholder="שם משתמש">
+          <input type="password" id="loginPassword" placeholder="סיסמה">
+          <button type="submit">התחבר</button>
+        </form>
+        <p id="loginMsg" class="message"></p>
+      </div>
+      <div id="register-form" class="auth-form">
+        <h3>הרשמה</h3>
+        <form id="registerForm">
+          <input type="text" id="regUsername" placeholder="שם משתמש">
+          <input type="password" id="regPassword" placeholder="סיסמה">
+          <input type="text" id="regPayment" placeholder="פרטי תשלום">
+          <button type="submit">הרשם</button>
+        </form>
+        <p id="registerMsg" class="message"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="userData.js"></script>
+  <script src="auth.js"></script>
+
+  <div class="home-top-section">
+    <header class="home-header">
+      <nav class="top-nav">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="#" style="color: var(--bg-dark); font-weight:bold;">Home</a></li>
+        </ul>
+      </nav>
+      <div class="main-title">
+        <h1>Little</h1>
+        <p class="subtitle">"Freedom starts with you... and it's little"</p>
+      </div>
+    </header>
+
+    <div class="home-button-container">
+      <button class="home-big-button social-button" id="home-social-btn">Social</button>
+      <button class="home-big-button search-button" id="home-search-btn">Search</button>
+    </div>
+  </div>
+
+  <div class="home-bottom-section">
+    <div class="bottom-buttons"></div>
+    <div class="bottom-icons">
+      <div class="icon-wrapper" id="locker-icon">
+        <div class="icon-circle">
+          <span class="icon-text">🔑</span>
+        </div>
+      </div>
+      <div class="icon-wrapper" id="mail-icon">
+        <div class="icon-circle">
+          <span class="icon-text">✉️</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bottom-nav">
+    <button id="nav-home" class="nav-btn">Home</button>
+    <button id="nav-back" class="nav-btn">←</button>
+    <button id="nav-forward" class="nav-btn">→</button>
+    <button id="nav-refresh" class="nav-btn refresh-btn">⟳</button>
+  </div>
+
+  <script src="nav.js"></script>
+  <script>
+    document.getElementById('home-social-btn').addEventListener('click', () => {
+      window.location.href = 'social.html';
+    });
+    document.getElementById('home-search-btn').addEventListener('click', () => {
+      window.location.href = 'browser.html';
+    });
+    document.getElementById('locker-icon').addEventListener('click', () => {
+      window.location.href = 'locker.html';
+    });
+    document.getElementById('mail-icon').addEventListener('click', () => {
+      window.location.href = 'mail.html';
+    });
+  </script>
+</body>
+</html>
