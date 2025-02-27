@@ -9,17 +9,15 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+// אחסון פשוט להדגמה
 let USERS = {};
 let POSTS = [];
 let MESSAGES = [];
 let FILES = {};
 
-// סטטיקה (לא חובה): הגשת קבצים, אם תרצה
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 
-// multer להגדרת העלאות
+// הגדרת multer לאחסון העלאות
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
   filename: (req, file, cb) => {
@@ -31,11 +29,12 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// לדוגמה
 app.get('/', (req, res) => {
-  res.send("Little Pro server is running!");
+  res.send("Little Pro server is running on Railway!");
 });
 
-// register
+// הרשמה
 app.post('/register', (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
@@ -49,7 +48,7 @@ app.post('/register', (req, res) => {
   return res.json({ success: true, username });
 });
 
-// login
+// התחברות
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const user = USERS[username];
@@ -60,7 +59,7 @@ app.post('/login', (req, res) => {
   }
 });
 
-// posts
+// פוסטים
 app.get('/posts', (req, res) => {
   let page = parseInt(req.query.page) || 1;
   const pageSize = 5;
@@ -92,7 +91,7 @@ app.post('/posts', (req, res) => {
   return res.json({ success: true, post });
 });
 
-// upload
+// העלאת קובץ
 app.post('/upload', upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.json({ success: false, message: "No file uploaded" });
@@ -114,13 +113,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
   return res.json({ success: true, file: fileInfo });
 });
 
+// WebSocket
 io.on('connection', socket => {
   console.log('Socket connected:', socket.id);
-  socket.on('login', username => {
-    socket.join(username);
-  });
 });
 
+// להאזין לפורט מ-railway או 3000 מקומית
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Little Pro server listening on port ${PORT}`);

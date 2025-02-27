@@ -14,16 +14,13 @@ function createWindow() {
       contextIsolation: false
     }
   });
-
-  // טוען עמוד הבית
   mainWindow.loadFile('home.html');
-
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
 }
 
-// BrowserView עבור הדפדפן (אם רוצים)
+// BrowserView (אם תרצה סימולציית דפדפן פנימי)
 ipcMain.on('show-browser', () => {
   if (!browserView) {
     browserView = new BrowserView({
@@ -33,6 +30,7 @@ ipcMain.on('show-browser', () => {
       }
     });
     mainWindow.setBrowserView(browserView);
+
     const bounds = mainWindow.getContentBounds();
     const topBarHeight = 100;
     const bottomNavHeight = 70;
@@ -58,7 +56,6 @@ ipcMain.on('load-url', (event, url) => {
     browserView.webContents.loadURL(url);
   }
 });
-
 ipcMain.on('go-back', () => {
   if (browserView && browserView.webContents.canGoBack()) {
     browserView.webContents.goBack();
@@ -78,12 +75,8 @@ ipcMain.on('reload', () => {
 app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  if (process.platform !== 'darwin') app.quit();
 });
 app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });

@@ -2,15 +2,14 @@
     "name": "little-pro",
     "version": "1.0.0",
     "description": "Little Pro MVP",
-    "main": "main.js",
+    "main": "server.js",
     "scripts": {
-        "start": "node server.js .",
-        "electron": "electron"
+      "start": "node server.js",
+      "electron": "electron ."
     },
     "dependencies": {
-        "electron": "^30.0.1",
-        "express": "^4.21.2",
-        "multer": "^1.4.5-lts.1",
-        "socket.io": "^4.8.1"
+      "express": "^4.18.2",
+      "socket.io": "^4.5.4",
+      "multer": "^1.4.5-lts.1"
     }
-}
+  }

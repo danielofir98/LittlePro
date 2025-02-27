@@ -1,5 +1,6 @@
 // auth.js
 document.addEventListener('DOMContentLoaded', () => {
+    // בדוגמה, נראה מודאל אם לא התחברו
     if (!sessionStorage.getItem('loggedIn')) {
       const authModal = document.getElementById('auth-modal');
       if (authModal) authModal.classList.remove('hidden');
@@ -35,11 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
       registerTabBtn.addEventListener('click', switchToRegister);
     }
   
-    // לדוגמה, אם השרת בריילווי:
-    // const BASE_URL = "https://your-railway-app.onrender.com";
-    const BASE_URL = "http://localhost:3000";
+    // כתובת השרת ב-Railway
+    const BASE_URL = "https://littlepro-production.up.railway.app";
   
-    // register
+    // הרשמה
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
       registerForm.addEventListener('submit', async (e) => {
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   
-    // login
+    // התחברות
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
       loginForm.addEventListener('submit', async (e) => {
