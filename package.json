@@ -4,8 +4,8 @@
     "description": "Little Pro MVP",
     "main": "main.js",
     "scripts": {
-        "start": "electron .",
-        "server": "node server.js"
+        "start": "node server.js .",
+        "electron": "electron"
     },
     "dependencies": {
         "electron": "^30.0.1",
