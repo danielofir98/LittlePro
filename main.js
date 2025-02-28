@@ -14,13 +14,15 @@ function createWindow() {
       contextIsolation: false
     }
   });
-  mainWindow.loadFile('home.html');
+  // טוען את home.html כעמוד ראשון
+  mainWindow.loadFile(path.join(__dirname, 'home.html'));
+
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
 }
 
-// BrowserView (אם תרצה סימולציית דפדפן פנימי)
+// BrowserView לדפדפן פנימי (אופציונלי)
 ipcMain.on('show-browser', () => {
   if (!browserView) {
     browserView = new BrowserView({

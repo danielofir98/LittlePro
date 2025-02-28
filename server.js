@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-// אחסון פשוט להדגמה
+// אחסון דמה
 let USERS = {};
 let POSTS = [];
 let MESSAGES = [];
@@ -17,7 +17,7 @@ let FILES = {};
 
 app.use(express.json());
 
-// הגדרת multer לאחסון העלאות
+// הגדרת multer 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
   filename: (req, file, cb) => {
@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// לדוגמה
+// ברירת מחדל
 app.get('/', (req, res) => {
   res.send("Little Pro server is running on Railway!");
 });
@@ -113,12 +113,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
   return res.json({ success: true, file: fileInfo });
 });
 
-// WebSocket
+// socket.io
 io.on('connection', socket => {
   console.log('Socket connected:', socket.id);
 });
 
-// להאזין לפורט מ-railway או 3000 מקומית
+// הרצה
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Little Pro server listening on port ${PORT}`);
