@@ -21,6 +21,7 @@
       "icon": "assets/icon.png"
     }
   },
+
   "description": "Little Pro MVP",
   "main": "main.js",
   "scripts": {
