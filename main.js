@@ -6,25 +6,32 @@ let mainWindow;
 let browserView = null;
 
 function createWindow() {
+  // משפרים גודל התחלתי, כותרים (title) ואייקון:
   mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 900,
+    width: 1200,
+    height: 800,
+    title: "Little Pro",
+    icon: path.join(__dirname, 'assets', 'icon.png'), // אם תרצה אייקון משלך
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
     }
   });
-  // טוען את home.html כעמוד ראשון
+
+  // טוען את דף הבית
   mainWindow.loadFile(path.join(__dirname, 'home.html'));
+
+  // מסיר תפריט ברירת מחדל (אופציונלי):
+  mainWindow.setMenuBarVisibility(false);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
 }
 
-// BrowserView לדפדפן פנימי (אופציונלי)
+// שימוש ב-BrowserView (סימולציית "דפדפן"):
 ipcMain.on('show-browser', () => {
-  if (!browserView) {
+  if (!browserView && mainWindow) {
     browserView = new BrowserView({
       webPreferences: {
         nodeIntegration: true,
@@ -47,7 +54,7 @@ ipcMain.on('show-browser', () => {
 });
 
 ipcMain.on('hide-browser', () => {
-  if (browserView) {
+  if (browserView && mainWindow) {
     mainWindow.removeBrowserView(browserView);
     browserView = null;
   }
@@ -77,8 +84,11 @@ ipcMain.on('reload', () => {
 app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
+  // ב-Windows/Linux נסגור את האפליקציה
   if (process.platform !== 'darwin') app.quit();
 });
+
 app.on('activate', () => {
+  // macOS: יוצרים חלון חדש אם אין חלון פתוח
   if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
