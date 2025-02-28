@@ -66,7 +66,7 @@ io.on('connection', socket => {
 });
 
 // מאזינים לפורט שהסביבה מספקת, או 3000 מקומית
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
   console.log(`Little Pro server listening on port ${PORT}`);
 });
